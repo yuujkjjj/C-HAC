@@ -35,81 +35,38 @@ https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/bb493f9c-
 ## Clone the repository.
 cd to your workspace and clone the repo.
 ```
-git clone https://github.com/OscarHuangWind/Safe-Human-in-the-Loop-RL.git
+git clone https://github.com/lzqw/C-HAC.git
 ```
 
 ## Create a new Conda environment.
 cd to your workspace:
 ```
-conda env create -f environment.yml
+conda create -n CHAC python=3.9
 ```
 
 ## Activate virtual environment.
 ```
-conda activate safehil-rl
+conda activate CHAC
 ```
 
 ## Install Pytorch
 Select the correct version based on your cuda version and device (cpu/gpu):
 ```
-pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-## Install the SMARTS.
+## Install other rqquirements.
 ```
-# Download SMARTS
-
-git clone https://github.com/huawei-noah/SMARTS.git
-
-cd <path/to/SMARTS>
-
-# Important! Checkout to comp-1 branch
-git checkout comp-1
-
-# Install the system requirements.
-bash utils/setup/install_deps.sh
-
-# Install smarts.
-pip install -e '.[camera_obs,test,train]'
-
-# Install extra dependencies.
-pip install -e .[extras]
+# Install the requirements.
+pip install -r requirements.txt
 ```
-
-## Build the scenario.
-```
-cd <path/to/Safe-Human-in-the-loop-RL>
-scl scenario build --clean scenario/straight/
-```
-
-## Visulazation
-```
-scl envision start
-```
-Then go to http://localhost:8081/
 
 ## Training
 Modify the sys path in **main.py** file, and run:
 ```
-python main.py
+python example_train/train_dsact_pvp_rl.py
 ```
 
-## Human Guidance
-Change the model in **main.py** file to SaHiL/PHIL/HIRL, and run:
-```
-python main.py
-```
-Check the code in keyboard.py to get idea of keyboard control.
-
-Alternatively, you can use G29 set to intervene the vehicle control, check the lines from 177 to 191 in main.py file for the details.
-
-The "Egocentric View" is recommended for the human guidance.
-
-## Evaluation
-Edit the mode in config.yaml as evaluation and run:
-```
-python main.py
-```
 
 
 
