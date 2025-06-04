@@ -21,14 +21,14 @@ Email: lizeqiao@tju.edu.cn
 
 # Demonstration 
 
-## Lane-change Performance
-https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/690b4b44-ac57-4ce1-890b-57ac125cef63
-## Uncooperative Road User
-https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/52b2ec4b-8cd4-4b9d-a3a9-70bbd3b77157
-## Cooperative Road User
-https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/02f95274-80cc-4e6b-8a5b-edfcbbd4d0a6
-## Unobserved Road Structure
-https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/bb493f9c-d2c9-4db5-b034-ad456ef96c8a
+## Training example using C-HAC
+[![Watch the vide](https://img.youtube.com/vi/_NIaXMbuRl8/0.jpg)](https://www.youtube.com/watch?v=uXmUke0Z1co)
+## Testing example
+[![Watch the vide](https://img.youtube.com/vi/_NIaXMbuRl8/0.jpg)](https://www.youtube.com/watch?v=_NIaXMbuRl8)
+## C-HAC Real-World Driving Demonstration – Route 1
+[![Watch the vide](https://img.youtube.com/vi/OwGJLFsqdjM/0.jpg)](https://www.youtube.com/watch?v=OwGJLFsqdjM)
+## C-HAC Real-World Driving Demonstration – Route 2
+[![Watch the vide](https://img.youtube.com/vi/CdV9UZtKCzM/0.jpg)](https://www.youtube.com/watch?v=CdV9UZtKCzM)
 
 # User Guide
 
@@ -55,16 +55,16 @@ Select the correct version based on your cuda version and device (cpu/gpu):
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-## Install other rqquirements.
+## Install other requirements.
 ```
 # Install the requirements.
 pip install -r requirements.txt
 ```
 
 ## Training
-Modify the sys path in **main.py** file, and run:
+Modify the sys path in **example_train** file, and run:
 ```
-python example_train/train_dsact_pvp_rl.py
+python train_dsact_pvp_rl.py
 ```
 
 
