@@ -1,56 +1,122 @@
-## Reference
-- [Distributional Soft Actor-Critic (DSAC)](https://ieeexplore.ieee.org/document/9448360)
-- [Distributional Soft Actor-Critic with Three Refinements (DSAC-T)](https://arxiv.org/abs/2310.05858)
+# :page_with_curl: Confidence-Guided Human-AI Collaboration: Reinforcement Learning with Distributional Proxy Value Propagation for Autonomous Driving
 
+# :fire: Source Code Released! :fire:
 
-## Requires
-1. Windows 7 or greater or Linux.
-2. Python 3.8.
-3. The installation path must be in English.
+## [[**arXiv**]]([https://www.researchgate.net/publication/382212078_Safety-Aware_Human-in-the-Loop_Reinforcement_Learning_With_Shared_Control_for_Autonomous_Driving](https://services.arxiv.org/html/submission/6510711/view))
 
+1. This work introduces **Distributional Proxy Value Propagation (D-PVP)**, which integrates human intention into distributional reinforcement learning, enabling efficient policy learning with minimal human intervention.
 
-## Installation
-```bash
-# Please make sure not to include Chinese characters in the installation path, as it may result in a failed execution.
-# clone DSAC-T repository
-git clone git@github.com/Jingliang-Duan/DSAC-T
-cd DSAC-T
-# create conda environment
-conda env create -f DSAC2.0_environment.yml
-conda activate DSAC2.0
-# install DSAC2.0
-pip install -e.
+2. A **shared control mechanism** and **policy confidence evaluation algorithm** dynamically balance human-guided and self-learning policies, ensuring both safety and performance in autonomous driving.
+
+3. The proposed method is validated in both **MetaDrive** and **real-world urban driving** using a sensor-equipped UGV. Extensive experiments demonstrate superior performance in terms of sample efficiency, safety, and generalization across diverse traffic scenarios.
+
+Email: lizeqiao@tju.edu.cn
+
+# Framework
+
+<p align="center">
+<img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/framework.png" height= "450" width="900">
+</p>
+
+# Frenet-based Dynamic Potential Field (FDPF)
+<p float="left">
+  <img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/FDPF_scenarios.png" height= "140" />
+  <img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/FDPF_bound.png" height= "140" /> 
+  <img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/FDPF_obstacle.png" height= "140" />
+  <img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/FDPF_final.png" height= "140" />
+</p>
+
+# Demonstration (accelerated videos)
+
+## Lane-change Performance
+https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/690b4b44-ac57-4ce1-890b-57ac125cef63
+## Uncooperative Road User
+https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/52b2ec4b-8cd4-4b9d-a3a9-70bbd3b77157
+## Cooperative Road User
+https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/02f95274-80cc-4e6b-8a5b-edfcbbd4d0a6
+## Unobserved Road Structure
+https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/bb493f9c-d2c9-4db5-b034-ad456ef96c8a
+
+# User Guide
+
+## Clone the repository.
+cd to your workspace and clone the repo.
+```
+git clone https://github.com/OscarHuangWind/Safe-Human-in-the-Loop-RL.git
 ```
 
+## Create a new Conda environment.
+cd to your workspace:
+```
+conda env create -f environment.yml
+```
 
-## Train
-These are two examples of running DSAC-T on two environments. 
-Train the policy by running:
-```bash
-cd example_train
-#Train a pendulum task
+## Activate virtual environment.
+```
+conda activate safehil-rl
+```
+
+## Install Pytorch
+Select the correct version based on your cuda version and device (cpu/gpu):
+```
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
+```
+
+## Install the SMARTS.
+```
+# Download SMARTS
+
+git clone https://github.com/huawei-noah/SMARTS.git
+
+cd <path/to/SMARTS>
+
+# Important! Checkout to comp-1 branch
+git checkout comp-1
+
+# Install the system requirements.
+bash utils/setup/install_deps.sh
+
+# Install smarts.
+pip install -e '.[camera_obs,test,train]'
+
+# Install extra dependencies.
+pip install -e .[extras]
+```
+
+## Build the scenario.
+```
+cd <path/to/Safe-Human-in-the-loop-RL>
+scl scenario build --clean scenario/straight/
+```
+
+## Visulazation
+```
+scl envision start
+```
+Then go to http://localhost:8081/
+
+## Training
+Modify the sys path in **main.py** file, and run:
+```
 python main.py
-#Train a humanoid task. To execute this file, Mujoco and Mujoco-py need to be installed first. 
-python dsac_mlp_humanoidconti_offserial.py
 ```
-After training, the results will be stored in the "DSAC-T/results" folder.
 
-### Algorithm Switching
-In the "main.py/dsac_mlp_humanoidconti_offserial.py" file, you can switch between 'DSAC_V2' and 'DSAC_V1' by changing the "--algorithm" parameter. 
-
-## Simulation 
-In the "DSAC-T/results" folder, pick the path to the folder where the policy will be applied to the simulation and select the appropriate PKL file for the simulation.
-```bash
-python run_policy.py
-#you may need to "pip install imageio-ffmpeg" before running this file on Windows. 
+## Human Guidance
+Change the model in **main.py** file to SaHiL/PHIL/HIRL, and run:
 ```
-After running, the simulation vedio and state&action curve figures will be stored in the "DSAC-T/figures" folder.
+python main.py
+```
+Check the code in keyboard.py to get idea of keyboard control.
+
+Alternatively, you can use G29 set to intervene the vehicle control, check the lines from 177 to 191 in main.py file for the details.
+
+The "Egocentric View" is recommended for the human guidance.
+
+## Evaluation
+Edit the mode in config.yaml as evaluation and run:
+```
+python main.py
+```
 
 
 
-
-
-
-
-## Acknowledgment
-We would like to thank all members in Intelligent Driving Laboratory (iDLab), School of Vehicle and Mobility, Tsinghua University for making excellent contributions and providing helpful advices for DSAC-T.
