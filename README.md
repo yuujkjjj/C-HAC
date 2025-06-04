@@ -15,18 +15,11 @@ Email: lizeqiao@tju.edu.cn
 # Framework
 
 <p align="center">
-<img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/framework.png" height= "450" width="900">
+<img src="https://github.com/lzqw/C-HAC/blob/main/pic/paper_framework_%E6%94%B9.jpg" height= "450" width="1000">
 </p>
 
-# Frenet-based Dynamic Potential Field (FDPF)
-<p float="left">
-  <img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/FDPF_scenarios.png" height= "140" />
-  <img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/FDPF_bound.png" height= "140" /> 
-  <img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/FDPF_obstacle.png" height= "140" />
-  <img src="https://github.com/OscarHuangWind/Human-in-the-loop-RL/blob/master/presentation/FDPF_final.png" height= "140" />
-</p>
 
-# Demonstration (accelerated videos)
+# Demonstration 
 
 ## Lane-change Performance
 https://github.com/OscarHuangWind/Human-in-the-loop-RL/assets/41904672/690b4b44-ac57-4ce1-890b-57ac125cef63
