@@ -2,7 +2,7 @@
 
 # :fire: Source Code Released! :fire:
 
-## [[**arXiv**]]([https://www.researchgate.net/publication/382212078_Safety-Aware_Human-in-the-Loop_Reinforcement_Learning_With_Shared_Control_for_Autonomous_Driving](https://services.arxiv.org/html/submission/6510711/view))
+## [[**arXiv**]](https://arxiv.org/abs/2506.03568)
 
 1. This work introduces **Distributional Proxy Value Propagation (D-PVP)**, which integrates human intention into distributional reinforcement learning, enabling efficient policy learning with minimal human intervention.
 
