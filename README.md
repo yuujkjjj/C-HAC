@@ -15,7 +15,7 @@ Email: lizeqiao@tju.edu.cn
 # Framework
 
 <p align="center">
-<img src="https://github.com/lzqw/C-HAC/blob/main/pic/paper_framework_%E6%94%B9.jpg" height= "450" width="1000">
+<img src="https://github.com/lzqw/C-HAC/blob/main/pic/paper_framework_%E6%94%B9.jpg" height= "400" width="1000">
 </p>
 
 
