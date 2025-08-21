@@ -31,7 +31,7 @@ class Trainer:
             self.networks.load_state_dict(torch.load(kwargs["ini_network_dir"]))
 
         self.replay_batch_size = kwargs["replay_batch_size"]
-        self.max_iteration = kwargs["max_iteration"]
+        self.max_iteration = 10
         self.sample_interval = kwargs.get("sample_interval", 1)
         self.log_save_interval = kwargs["log_save_interval"]
         self.apprfunc_save_interval = kwargs["apprfunc_save_interval"]
